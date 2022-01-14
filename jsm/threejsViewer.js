@@ -165,8 +165,7 @@ class threejsViewer {
                 //嘗試
                 texture.format = THREE.LuminanceFormat;
                 texture.type = THREE.UnsignedByteType;
-                //texture.format = THREE.LuminanceFormat;
-                //texture.type = //...
+                texture.minFilter = texture.magFilter = THREE.LinearFilter;
 
                 let cmtexture = new THREE.DataTexture(colormap, 256, 1);
                 let material = new THREE.ShaderMaterial({
@@ -196,7 +195,7 @@ class threejsViewer {
                 uniforms['u_cmdata'].value = new THREE.DataTexture(colormap, 256, 1);
                 uniforms['u_renderstyle'].value = arg.renderType;
             }
-
+            
             if (volume.used) {
                 uniforms = mesh.material.uniforms;
                 if (uniforms['u_sizeEnable'].value == 0){
@@ -205,10 +204,8 @@ class threejsViewer {
                     //嘗試
                     texture.format = THREE.LuminanceFormat;
                     texture.type = THREE.UnsignedByteType;
-                    //texture.format = THREE.LuminanceFormat;
-                    //texture.type = //...
-
-                    uniforms['u_sizeEnable'].value = 1;
+                    
+                    //uniforms['u_sizeEnable'].value = 1;
                     uniforms['u_sizeData'].value = texture;
                 }
                 else {
