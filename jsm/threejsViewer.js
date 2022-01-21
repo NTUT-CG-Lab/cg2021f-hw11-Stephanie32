@@ -95,6 +95,7 @@ class threejsViewer {
             let uniforms = null
             let mesh = this.scene.getObjectByName(name)
             let scale = 1 / Math.max(...dims)
+            console.log('scale: ', scale)
 
             
             /*if (mesh == null) {
@@ -205,7 +206,7 @@ class threejsViewer {
                     texture.format = THREE.LuminanceFormat;
                     texture.type = THREE.UnsignedByteType;
                     
-                    //uniforms['u_sizeEnable'].value = 1;
+                    uniforms['u_sizeEnable'].value = 1;
                     uniforms['u_sizeData'].value = texture;
                 }
                 else {

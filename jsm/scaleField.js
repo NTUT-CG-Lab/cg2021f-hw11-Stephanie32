@@ -164,13 +164,16 @@ class ScaleField {
 
 	process(onprogress, onload) {
 		if (!this.used) {
+			//console.log('do 1')
 			let gaussian1 = new Gaussian(1)
 			gaussian1.diff(this, (volume, progress) => {
 				if (onprogress instanceof Function) {
+					//console.log('do 3')
 					onprogress(volume, progress)
                 }
 				
 				if (progress == 1) {
+					//console.log('do 2')
 					this.interp()
 					if (onload instanceof Function) {
 						onload()
